@@ -1,16 +1,35 @@
-import React,{Component} from "react";
+import React from "react";
 
-import {inject,observer} from "mobx-react";
+import {observer, inject} from "mobx-react";
 
-@inject("productState")
+import ProductWidget from "./ProductWidget";
+
+@inject("productState", "cart")
 @observer
-export default class ProductList extends Component{
+export default class ProductList extends React.Component {
 
+    componentDidMount() {
+        this.props.productState.getProducts();
+    }
 
-    render(){
-        return(
-            <h2>Product List -- {this.props.productState.products.length}</h2>
+    render() {
+
+        let list= this.props.productState
+             .products.map ( product => (
+                 <ProductWidget key={product.id} product={product}>
+                    {product.name}
+                 </ProductWidget>
+             ))
+
+        return (
+             
+            <div>
+                <h2>Cart Size [{this.props.cart.cartSize}] </h2>
+                <div className="flex two">
+                    {list}
+                </div>
+            </div>
+
         )
-        
     }
 }
