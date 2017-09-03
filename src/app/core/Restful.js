@@ -8,6 +8,20 @@ class Restful {
 
     //Core method, this uses window.fetch
     fetchJson(url, options) {
+        
+        if (!options) {
+            options = {}
+        }
+
+        if (localStorage.token) {
+            options.headers = Object.assign({}, options.headers, 
+                            {
+                                "Authorization": "JWT " + localStorage.token
+                            }
+                        )
+        }
+        
+
         return window.fetch(url, options)
             .then ( response => {
                 return response.json();

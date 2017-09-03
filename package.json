@@ -4,10 +4,10 @@
   "description": "React app",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
     "compile": "babel src --out-dir  dist",
-    "build": "webpack --config webpack.prod.config.js",
-    "start": "webpack-dev-server --inline --hot --open"
+    "build": "rm -rf dist && webpack --config webpack.prod.config.js",
+    "start": "webpack-dev-server --inline --hot --open",
+    "test":"jest"
   },
   "author": "Ankit Mehrotra",
   "license": "ISC",
@@ -25,11 +25,15 @@
   "devDependencies": {
     "babel-cli": "^6.26.0",
     "babel-core": "^6.26.0",
+    "babel-jest": "^20.0.3",
     "babel-loader": "^7.1.2",
     "babel-preset-es2015": "^6.24.1",
     "babel-preset-react": "^6.24.1",
     "copy-webpack-plugin": "^4.0.1",
+    "enzyme": "^2.9.1",
     "html-webpack-plugin": "^2.30.1",
+    "jest": "^20.0.4",
+    "react-test-renderer": "^15.6.1",
     "webpack": "^3.5.5",
     "webpack-dev-server": "^2.7.1"
   }

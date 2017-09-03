@@ -42,6 +42,11 @@ loadItems() {
     this.items = this.items.filter ( item => item.id != id);
 }
 
+
+@action empty() {
+    this.items = []
+}
+
 //FIXME:
 @action updateItem(id, qty) {
     console.log(id, qty);
